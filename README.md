@@ -150,5 +150,13 @@ Xv6 uses a process scheduler to manage the state of each process and determine w
 
 The file system uses on-disk data structures to represent the tree of named directories and files, to record the identities of the blocks that hold each file's content, and to record which areas of the disk are free. The file system must support crash recovery, and different processes may operate on the file system at the same time, so the file-system code must coordinate to maintain invariants. Accessing a disk is orders of magnitude slower than accessing memory, so the file system must maintain an in-memory cache of popular blocks.
 
+14) The differences between system calls and library functions in the context of XV6 are as follows:
+    The system calls are the interface between user-level applications and the kernel. They provide a way for user-level applications to request services from the kernel, such as creating a new process or reading from a file. System calls are implemented in the kernel and are accessed through a software interrupt.
 
+   On the other hand, library functions are functions that are provided by libraries that are linked to user-level applications. They are not part of the kernel and are not accessed through a software interrupt. Instead, they are called like any other function in the application.
+
+   Examples of system calls in XV6 include fork(), exec(), and open(). These system calls allow user-level applications to create new processes, execute programs, and open files respectively. 
+   Examples of library functions in XV6 include printf() and scanf(), which are part of the C standard library and are used for input and output.
+
+In summary, system calls provide a way for user-level applications to interact with the kernel, while library functions provide a way for user-level applications to reuse code that is provided by libraries. 
 
