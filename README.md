@@ -161,7 +161,7 @@ Examples of library functions in XV6 include printf() and scanf(), which are par
 
 In summary, system calls provide a way for user-level applications to interact with the kernel, while library functions provide a way for user-level applications to reuse code that is provided by libraries.
 
-15) Paging is a technique the operating system uses to manage memory. In XV6, the RISC-V hardware provides page tables that map virtual addresses used by user-level applications to physical addresses used by the hardware. The page tables allow the operating system to isolate different processes' address spaces and to multiplex them onto a single physical memory. The page tables provide a level of indirection that allows the operating system to perform many tricks, such as mapping the same memory in several address spaces and guarding kernel and user stacks with an unmapped page.
+15) Paging is a technique the operating system uses to manage memory. In XV6, the RISC-V hardware provides page tables that map virtual addresses used by user-level applications to physical addresses used by the hardware. The page tables allow the operating system to isolate different processes' address spaces and multiplex them onto a single physical memory. The page tables provide a level of indirection that allows the operating system to perform many tasks, such as mapping the same memory in several address spaces and guarding kernel and user stacks with an unmapped page.
 
 The page tables in XV6 are organized into three levels: page global directory (PGD), page upper directory (PUD), and page table (PT). The PGD is the top-level page table, and it contains pointers to PUDs. The PUDs, in turn, contain pointers to PTs. The PTs contain the actual page table entries (PTEs) that map virtual addresses to physical addresses.
 
@@ -173,5 +173,9 @@ The benefits of using paging in memory management include:
 
 3. Memory sharing: Paging allows the operating system to share memory between processes. By mapping the same physical memory to different virtual addresses in different processes' address spaces, the operating system can allow processes to share memory without the need for copying.
 
-In summary, paging is a technique used by the operating system to manage memory. In XV6, the RISC-V hardware provides page tables that map virtual addresses used by user-level applications to physical addresses used by the hardware. Paging provides many benefits, including memory protection, virtual memory, and memory sharing. 
+16) Three examples of shell commands are:
+
+1. ls: This command lists the contents of a directory. When used without any arguments, it lists the contents of the current directory. For example, "ls" will list the files and directories in the current directory.
+2. cd: This command changes the current working directory. For example, "cd /usr" changes the current directory to /usr.
+3. cat: This command concatenates and displays the contents of files. For example, "cat file1 file2" will display the contents of file1 followed by the contents of file2.
 
