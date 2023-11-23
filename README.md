@@ -146,8 +146,9 @@ Xv6 uses a process scheduler to manage the state of each process and determine w
 5. The directory layer: This layer provides a hierarchical namespace for files and directories and maps pathnames to inodes.
 6. The name layer: This layer provides a way to look up inodes by name and caches recently used names to speed up future lookups.
 7. The user layer: This layer provides a set of system calls that allow user programs to interact with the file system.
+<centre>![image](https://github.com/anushkaa-ambuj/B21ES006_xv6-quiz/assets/92167974/dc508428-8af5-446d-8bb6-bba479d4fa91)</centre>
 
 The file system uses on-disk data structures to represent the tree of named directories and files, to record the identities of the blocks that hold each file's content, and to record which areas of the disk are free. The file system must support crash recovery, and different processes may operate on the file system at the same time, so the file-system code must coordinate to maintain invariants. Accessing a disk is orders of magnitude slower than accessing memory, so the file system must maintain an in-memory cache of popular blocks.
-![image](https://github.com/anushkaa-ambuj/B21ES006_xv6-quiz/assets/92167974/dc508428-8af5-446d-8bb6-bba479d4fa91)
+
 
 
