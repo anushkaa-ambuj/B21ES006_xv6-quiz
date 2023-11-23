@@ -151,12 +151,27 @@ Xv6 uses a process scheduler to manage the state of each process and determine w
 The file system uses on-disk data structures to represent the tree of named directories and files, to record the identities of the blocks that hold each file's content, and to record which areas of the disk are free. The file system must support crash recovery, and different processes may operate on the file system at the same time, so the file-system code must coordinate to maintain invariants. Accessing a disk is orders of magnitude slower than accessing memory, so the file system must maintain an in-memory cache of popular blocks.
 
 14) The differences between system calls and library functions in the context of XV6 are as follows:
-    The system calls are the interface between user-level applications and the kernel. They provide a way for user-level applications to request services from the kernel, such as creating a new process or reading from a file. System calls are implemented in the kernel and are accessed through a software interrupt.
 
-   On the other hand, library functions are functions that are provided by libraries that are linked to user-level applications. They are not part of the kernel and are not accessed through a software interrupt. Instead, they are called like any other function in the application.
+The system calls are the interface between user-level applications and the kernel. They provide a way for user-level applications to request services from the kernel, such as creating a new process or reading from a file. System calls are implemented in the kernel and are accessed through a software interrupt.
 
-   Examples of system calls in XV6 include fork(), exec(), and open(). These system calls allow user-level applications to create new processes, execute programs, and open files respectively. 
-   Examples of library functions in XV6 include printf() and scanf(), which are part of the C standard library and are used for input and output.
+On the other hand, library functions are functions that are provided by libraries that are linked to user-level applications. They are not part of the kernel and are not accessed through a software interrupt. Instead, they are called like any other function in the application.
 
-In summary, system calls provide a way for user-level applications to interact with the kernel, while library functions provide a way for user-level applications to reuse code that is provided by libraries. 
+Examples of system calls in XV6 include fork(), exec(), and open(). These system calls allow user-level applications to create new processes, execute programs, and open files respectively. 
+Examples of library functions in XV6 include printf() and scanf(), which are part of the C standard library and are used for input and output.
+
+In summary, system calls provide a way for user-level applications to interact with the kernel, while library functions provide a way for user-level applications to reuse code that is provided by libraries.
+
+15) Paging is a technique the operating system uses to manage memory. In XV6, the RISC-V hardware provides page tables that map virtual addresses used by user-level applications to physical addresses used by the hardware. The page tables allow the operating system to isolate different processes' address spaces and to multiplex them onto a single physical memory. The page tables provide a level of indirection that allows the operating system to perform many tricks, such as mapping the same memory in several address spaces and guarding kernel and user stacks with an unmapped page.
+
+The page tables in XV6 are organized into three levels: page global directory (PGD), page upper directory (PUD), and page table (PT). The PGD is the top-level page table, and it contains pointers to PUDs. The PUDs, in turn, contain pointers to PTs. The PTs contain the actual page table entries (PTEs) that map virtual addresses to physical addresses.
+
+The benefits of using paging in memory management include:
+
+1. Memory protection: Paging allows the operating system to protect memory from unauthorized access. Each process has its own address space, and the page tables ensure that a process can only access its own memory.
+
+2. Virtual memory: Paging allows the operating system to provide virtual memory to user-level applications. Virtual memory allows applications to use more memory than is physically available by swapping pages of memory to disk when they are not in use.
+
+3. Memory sharing: Paging allows the operating system to share memory between processes. By mapping the same physical memory to different virtual addresses in different processes' address spaces, the operating system can allow processes to share memory without the need for copying.
+
+In summary, paging is a technique used by the operating system to manage memory. In XV6, the RISC-V hardware provides page tables that map virtual addresses used by user-level applications to physical addresses used by the hardware. Paging provides many benefits, including memory protection, virtual memory, and memory sharing. 
 
