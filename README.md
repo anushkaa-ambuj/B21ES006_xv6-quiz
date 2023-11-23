@@ -116,4 +116,24 @@ Welcome to the XV Quiz for CSL 3030 - Operating Systems!
 20. Outline the steps involved in the boot process of XV6. What happens from the moment the computer is powered on to when the XV6 kernel is loaded into memory?
 
 ## Answers
-Please write your answers here
+1) b
+2) b
+3) d
+4) a
+5) 64
+6) c
+7) a
+8) a
+9) d
+10) b
+11) c
+
+12) <p> The different states a process can be in within the XV6 operating system, are:
+
+1. Running: The process is currently being executed by the CPU.
+2. Sleeping: The process is waiting for some event to occur, such as the completion of an I/O operation.
+3. Runnable: The process is ready to run, but is waiting for the CPU to become available.
+4. Zombie: The process has completed execution, but its parent has not yet called wait() to collect its exit status.
+5. Unused: The process table entry is not currently being used.
+
+Xv6 uses a process scheduler to manage the state of each process and determine which process should be executed next. The scheduler uses a round-robin algorithm to time-share the CPU among the set of processes waiting to execute. </p>
