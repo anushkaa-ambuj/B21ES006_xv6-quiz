@@ -136,7 +136,7 @@ Welcome to the XV Quiz for CSL 3030 - Operating Systems!
 5. Unused: The process table entry is not currently being used.
 
 Xv6 uses a process scheduler to manage the state of each process and determine which process should be executed next. The scheduler uses a round-robin algorithm to time-share the CPU among the set of processes waiting to execute.
-
+<hr>
 13) The file system structure in XV6 is organized into seven layers. The seven layers are:
 
 1. The disk layer: This layer reads and writes blocks on a virtio hard drive.
