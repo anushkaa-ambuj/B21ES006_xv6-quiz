@@ -128,12 +128,26 @@ Welcome to the XV Quiz for CSL 3030 - Operating Systems!
 10) b
 11) c
 
-12) <p> The different states a process can be in within the XV6 operating system, are:
-
+12) The different states a process can be in within the XV6 operating system are:
 1. Running: The process is currently being executed by the CPU.
 2. Sleeping: The process is waiting for some event to occur, such as the completion of an I/O operation.
-3. Runnable: The process is ready to run, but is waiting for the CPU to become available.
+3. Runnable: The process is ready to run but is waiting for the CPU to become available.
 4. Zombie: The process has completed execution, but its parent has not yet called wait() to collect its exit status.
 5. Unused: The process table entry is not currently being used.
 
-Xv6 uses a process scheduler to manage the state of each process and determine which process should be executed next. The scheduler uses a round-robin algorithm to time-share the CPU among the set of processes waiting to execute. </p>
+Xv6 uses a process scheduler to manage the state of each process and determine which process should be executed next. The scheduler uses a round-robin algorithm to time-share the CPU among the set of processes waiting to execute.
+
+13) The file system structure in XV6 is organized into seven layers. The seven layers are:
+
+1. The disk layer: This layer reads and writes blocks on a virtio hard drive.
+2. The buffer cache layer: This layer caches disk blocks and synchronizes access to them, ensuring that only one kernel process at a time can modify the data stored in any particular block.
+3. The logging layer: This layer allows higher layers to wrap updates to several blocks in a transaction and ensures that the blocks are updated atomically in the face of crashes.
+4. The inode layer: This layer provides individual files, each of which has an inode that describes the file's metadata, such as its size, ownership, and permissions.
+5. The directory layer: This layer provides a hierarchical namespace for files and directories and maps pathnames to inodes.
+6. The name layer: This layer provides a way to look up inodes by name and caches recently used names to speed up future lookups.
+7. The user layer: This layer provides a set of system calls that allow user programs to interact with the file system.
+
+The file system uses on-disk data structures to represent the tree of named directories and files, to record the identities of the blocks that hold each file's content, and to record which areas of the disk are free. The file system must support crash recovery, and different processes may operate on the file system at the same time, so the file-system code must coordinate to maintain invariants. Accessing a disk is orders of magnitude slower than accessing memory, so the file system must maintain an in-memory cache of popular blocks.
+![image](https://github.com/anushkaa-ambuj/B21ES006_xv6-quiz/assets/92167974/dc508428-8af5-446d-8bb6-bba479d4fa91)
+
+
